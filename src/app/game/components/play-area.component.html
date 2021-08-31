@@ -1,0 +1,34 @@
+<div>
+    
+    <div id="message-area">
+        <div id="turn-indicator">
+            <span *ngIf="!isGameOver"><h2>Turn:</h2></span>
+            <mat-icon *ngIf="!isGameOver">{{currentPlayer | boardMarkIcon}}</mat-icon>
+        </div>
+        <div id="result-message">
+            <span><h2>{{resultMessage}}</h2></span>
+            <div>
+                <button mat-button  *ngIf="isGameOver"
+                                    color="primary"
+                                    (click)="newGame()">New Game</button>
+            </div>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>Player X</th>
+                    <th>Player O</th>
+                </tr>
+                <tr>
+                    <td>{{score["X"]}}</td>
+                    <td>{{score["O"]}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <game-board [gameBoard]="gameBoardService.gameBoard"
+                    (cellSelected)="cellSelected($event)"></game-board>
+    </div>
+    
+</div>

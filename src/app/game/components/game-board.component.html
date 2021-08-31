@@ -1,0 +1,8 @@
+<mat-grid-list [cols]="gameBoard.length" rowHeight="100px" rowWidth="10px">
+    <ng-container *ngFor="let rowArray of gameBoard; let row = index">
+        <mat-grid-tile *ngFor="let colData of gameBoard[row]; let col = index"
+                       (click)="cellClicked($event, row, col)" >
+            <mat-icon>{{colData | boardMarkIcon}}</mat-icon>
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list>
